@@ -42,7 +42,7 @@ A brief description of what this project does and who it's for
 ![Logo](https://onedrive.live.com/embed?resid=39761E70E3F1CCCA%2112003&authkey=%21APxDBzFdzuVfO_I&height=660)
 ## Dilsplay all answers
 ![Logo](https://onedrive.live.com/embed?resid=39761E70E3F1CCCA%2112005&authkey=%21AGafXfE6QqpTpww&height=660)
-## End of the game
+## End of the game - I still need to do the last page.
 ![Logo](https://onedrive.live.com/embed?resid=39761E70E3F1CCCA%2112005&authkey=%21AGafXfE6QqpTpww&height=660)
 ## New Logo
 ![Logo](https://onedrive.live.com/embed?resid=39761E70E3F1CCCA%2112008&authkey=%21AKSt0lCyNYCPeRc&height=660)
