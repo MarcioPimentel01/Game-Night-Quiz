@@ -81,6 +81,3 @@ Takes two numbers and returns the sum.
 ## Authors
 
 - Please add your user name and github accont here.
-- [@MarcioPimentel01](https://www.github.com/MarcioPimentel01)
-- [@aleroas](https://github.com/aleroas)
-
