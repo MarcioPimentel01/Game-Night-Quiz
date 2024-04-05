@@ -1,4 +1,5 @@
-
+Juan Parra
+anthony
 # Game Night Quiz
 
 A brief description of what this project does and who it's for
@@ -80,5 +81,7 @@ Takes two numbers and returns the sum.
 ## Authors
 
 - Please add your user name and github accont here.
-- [@MarcioPimentel01](https://www.github.com/MarcioPimentel01) test
+testin edwin ver.2
+- [@EdRivera016] https://github.com/EdRivera016
+- [@MarcioPimentel01](https://www.github.com/MarcioPimentel01)
 
