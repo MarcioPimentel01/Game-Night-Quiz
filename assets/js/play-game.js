@@ -16,6 +16,19 @@
 
 //05 input the results into a array and stringfy into localstorage.
 
-//06 function to cont the score
+//06 function to count the score
 
-//07 rediract to score/end page.
+//07 rediract to score/end page.w
+
+// Just for our reference, follows the 5 categories API links
+
+// Film category.
+// 01 https://opentdb.com/api.php?amount=10&category=11
+// TV and Entertainment
+// 02 https://opentdb.com/api.php?amount=10&category=14
+// Music
+// 03 https://opentdb.com/api.php?amount=10&category=12
+// Video Games
+// 04 https://opentdb.com/api.php?amount=10&category=15
+// General knowledge
+// 05 https://opentdb.com/api.php?amount=10&category=9'
