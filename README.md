@@ -81,5 +81,5 @@ Takes two numbers and returns the sum.
 
 - Please add your user name and github accont here.
 - [@MarcioPimentel01](https://www.github.com/MarcioPimentel01)
-- https://github.com/aleroas
+- [@aleroas](https://github.com/aleroas)
 
