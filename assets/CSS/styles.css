@@ -5,7 +5,7 @@
     
     }
 
-    li, a, button { font-family: "Montserrat", sans-serif;
+    *li, a, button { font-family: "Montserrat", sans-serif;
         font-weight: 500;
         font-size: 18px;
         color: #edf0f1;
@@ -16,7 +16,8 @@
         justify-content: flex-start;
         align-items: left;
         padding: 30px 10%;
-        background: linear-gradient(rgb(55, 145, 197), rgb(105, 26, 157), rgb(10, 7, 3))
+        background: linear-gradient(rgb(8, 8, 8), rgb(29, 1, 47), rgb(12, 32, 149))
+        
         
         }
        
@@ -32,6 +33,9 @@
         
          .nav_links li a {
             transition: all 0.3s ease 0s;
+            color: rgb(187, 131, 176);
+            align-items: right;
+            justify-content: space-between;
          }
          
          .nav_links li a:hover {
@@ -59,13 +63,41 @@
          .main a {
             margin-right: 25px;
             margin-left: 10px;
-            color: purple;
+            color: rgb(128, 123, 128);
             font-size: 1.1rem;
             font-weight: 500;
             transition: all .50s ease;
          }
 
-       
+
+a {
+   position: relative;
+   display: inline-block;
+   font-family: arial;
+   padding: 25px 30px;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+   color: purple;
+   font-size: 1.2rem;
+   font-weight: 900;
+   transition: .5s;
+   overflow: hidden;
+
+}
+a:hover {
+   background-color: purple;
+   color: black;
+   box-shadow: 0 0 5px purple,
+   0 0 25px purple,
+   0 0 50px purple,
+   0 0 200px purple;
+   -webkit-box-reflect: 1px linear-gradient(transparent, #0005); 
+}
+
+body {
+   background-color: black;
+}
+ 
 
         
          
