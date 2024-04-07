@@ -23,6 +23,8 @@
        
         .logo {cursor: pointer;
                margin-right: auto;
+               
+             
         }
        
         .nav_links li {
@@ -85,9 +87,9 @@ a {
 
 }
 a:hover {
-   background-color: purple;
+   background-color: rgb(51, 12, 180);
    color: black;
-   box-shadow: 0 0 5px purple,
+   box-shadow: 0 0 5px rgb(46, 24, 208),
    0 0 25px purple,
    0 0 50px purple,
    0 0 200px purple;
