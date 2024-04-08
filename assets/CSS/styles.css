@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+*{box-sizing: border-box:
+    margin 0;
+    padding 0;
+    
+    }
+
+    *li, a, button { font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        color: #edf0f1;
+        text-decoration: none;
+        }
+        
+        header { display: flex;
+        justify-content: flex-start;
+        align-items: left;
+        padding: 30px 10%;
+        background: linear-gradient(rgb(8, 8, 8), rgb(29, 1, 47), rgb(12, 32, 149))
+        
+        
+        }
+       
+        .logo {cursor: pointer;
+               margin-right: auto;
+               
+               }
+       
+        .nav_links li {
+            display: inline-block;
+            padding: 0px 20px;
+            
+         }
+        
+         .nav_links li a {
+            transition: all 0.3s ease 0s;
+            color: rgb(187, 131, 176);
+            align-items: right;
+            justify-content: space-between;
+         }
+         
+         .nav_links li a:hover {
+            transition: all 0.3s ease 0s;
+            color: #5e98df;
+         }
+        
+         button {
+            margin-left: 20px;
+            padding: 9px 25px;
+            background-color: rgba(0,136,169,1);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+         }
+         button:hover {background-color: rgba(0,136,169,0.8);}
+
+         .main {
+            display: flex;
+            align-items: right;
+
+         }
+
+         .main a {
+            margin-right: 25px;
+            margin-left: 10px;
+            color: rgb(128, 123, 128);
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all .50s ease;
+         }
+
+.wrapper {
+   text-align: center;
+}
+
+a {
+   position: relative;
+   display: inline-block;
+   font-family: arial;
+   padding: 25px 30px;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+   color: purple;
+   font-size: 1.2rem;
+   font-weight: 900;
+   transition: .5s;
+   overflow: hidden;
+ 
+
+}
+a:hover {
+   background-color: rgb(51, 12, 180);
+   color: black;
+   box-shadow: 0 0 5px rgb(46, 24, 208),
+   0 0 25px purple,
+   0 0 50px purple,
+   0 0 200px purple;
+   -webkit-box-reflect: 1px linear-gradient(transparent, #0005); 
+}
+
+body {
+   background-color: black;
+}
+
+.logo2 {
+   text-align: center;
+}
+ 
+
+        
+         
