@@ -24,8 +24,7 @@
         .logo {cursor: pointer;
                margin-right: auto;
                
-             
-        }
+               }
        
         .nav_links li {
             display: inline-block;
@@ -71,6 +70,9 @@
             transition: all .50s ease;
          }
 
+.wrapper {
+   text-align: center;
+}
 
 a {
    position: relative;
@@ -84,6 +86,7 @@ a {
    font-weight: 900;
    transition: .5s;
    overflow: hidden;
+ 
 
 }
 a:hover {
@@ -98,6 +101,10 @@ a:hover {
 
 body {
    background-color: black;
+}
+
+.logo2 {
+   text-align: center;
 }
  
 
