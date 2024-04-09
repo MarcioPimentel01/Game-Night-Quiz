@@ -1,59 +1,44 @@
-const classProgressBar = document.querySelector(`progress-bar`)
-const classScoreCount = document.querySelector(`score-count`)
-const classApiQuestion = document.querySelector(`api-question`)
-const classApiAnswer = document.querySelector(`api-answer`)
+document.addEventListener('DOMContentLoaded', () => {
 
+    const classProgressBar = document.querySelector(`.progress-bar`)
+    const classScoreCount = document.querySelector(`.score-count`)
+    const classApiQuestion = document.querySelector(`.api-question`)
+    const classApiAnswer = document.querySelector(`.api-answer`)
 
-const questiontest = []
+    const questionTest = [];
 
-const newObject = {
-    type: "multiple",
-    difficulty: "medium",
-    category: "Entertainment: Film",
-    question: "Which movie sequel had improved box office results compared to its original film?",
-    correct_answer: "Toy Story 2",
-    incorrect_answers: [
-    "Sin City: A Dame to Kill For",
-    "Speed 2: Cruise Control",
-    "Son of the Mask"
-    ]
-  };
-  
-questiontest.push(newObject);
-  
+    const newObject = {
+        type: "multiple",
+        difficulty: "medium",
+        category: "Entertainment: Film",
+        question: "Which movie sequel had improved box office results compared to its original film?",
+        correct_answer: "Toy Story 2",
+        incorrect_answers: [
+            "Sin City: A Dame to Kill For",
+            "Speed 2: Cruise Control",
+            "Son of the Mask"
+            ]
+        };
 
-if (savedPosts) {
-    const posts = JSON.parse(savedPosts);
+    questionTest.push(newObject);
 
-    // ForEach method used to create the div element throughout createElement
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
+    if (questionTest.length > 0) {
+        // ForEach method used to create the div element throughout createElement
+        questionTest.forEach(quiz => {
+            const quizEl = document.createElement('div');
+            quizEl.classList.add('api-question');
         // Populate the HTML element with post data
-        postElement.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>${post.content}</p>
-            <p><b>By:</b> ${post.username}</p>
-            <p>${new Date().toLocaleString()}</p><br><hr>`; // I decided to add time for the post
-        // Append the post element to the recent posts container div element
-        recentPostsContainer.appendChild(postElement);
+            quizEl.innerHTML = `
+                <h2>${quiz.question}</h2>
+                <p>${quiz.correct_answer}</p>
+                <p>${quiz.incorrect_answers}<br></p>`; 
+        // Append the quiz element to the quiz container div element
+            classApiAnswer.appendChild(quizEl);
     });
-}
+    }
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
 
 
 
@@ -68,8 +53,7 @@ if (savedPosts) {
 //Class2 question - get from API https://opentdb.com/
 //Class3 MultipleChoices
 //Class4 Score
-=======
->>>>>>> 66d0bb5f60e27931086f87828aa0dafbdc0190dc
+
 
 //02 Make a function that will retrive information from the API server
     //add eventListner  on DOMcontentLoad - to html load first
