@@ -1,10 +1,42 @@
-//01 - target all the classes with querySelector.
-        //Discuss with Anthony and Maria, how to set up classes and ids.
+const classProgressBar = document.querySelector(`progress-bar`)
+const classScoreCount = document.querySelector(`score-count`)
+const classApiQuestion = document.querySelector(`api-question`)
+const classApiAnswer = document.querySelector(`api-answer`)
 
-//class1 progressBar
-//Class2 question - get from API https://opentdb.com/
-//Class3 MultipleChoices
-//Class4 Score
+
+const questiontest = []
+
+const newObject = {
+    type: "multiple",
+    difficulty: "medium",
+    category: "Entertainment: Film",
+    question: "Which movie sequel had improved box office results compared to its original film?",
+    correct_answer: "Toy Story 2",
+    incorrect_answers: [
+    "Sin City: A Dame to Kill For",
+    "Speed 2: Cruise Control",
+    "Son of the Mask"
+    ]
+  };
+  
+questiontest.push(newObject);
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //02 Make a function that will retrive information from the API server
     //add eventListner  on DOMcontentLoad - to html load first
