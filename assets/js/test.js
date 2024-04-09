@@ -1,33 +1,51 @@
-document.addEventListener('DOMContentLoaded', () =>{  //Loads HTML DOM before JS
-    // Gets the information from localStorage blogposts
-    const recentPostsContainer = document.getElementById('recent-posts-container');
-    const savedPosts = localStorage.getItem('blogPosts');
+document.addEventListener('DOMContentLoaded', () => {
 
-    // Parse the objec and Display saved posts
-    if (savedPosts) {
-        const posts = JSON.parse(savedPosts);
+    const classProgressBar = document.querySelector(`.progress-bar`)
+    const classScoreCount = document.querySelector(`.score-count`)
+    const classApiQuestion = document.querySelector(`.api-question`)
+    const classApiAnswer = document.querySelector(`.api-answer`)
 
+    // const selectedAnswer = true
+    // const score = 0 //to track the score right next to the progress bar
+    // const quizCounter = 0
+    // const questionTest = [];
+
+    const newObject = {
+        type: "multiple",
+        difficulty: "medium",
+        category: "Entertainment: Film",
+        question: "Which movie sequel had improved box office results compared to its original film?",
+        correct_answer: "Toy Story 2",
+        incorrect_answers: [
+            "Sin City: A Dame to Kill For",
+            "Speed 2: Cruise Control",
+            "Son of the Mask"
+        ]
+    };
+
+    questionTest.push(newObject);
+
+
+
+    if (questionTest.length > 0) {
         // ForEach method used to create the div element throughout createElement
-        posts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
+        questionTest.forEach(quiz => {
+            const quizEl = document.createElement('div');
+            quizEl.classList.add('api-question');
             // Populate the HTML element with post data
-            postElement.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.content}</p>
-                <p><b>By:</b> ${post.username}</p>
-                <p>${new Date().toLocaleString()}</p><br><hr>`; // I decided to add time for the post
-            // Append the post element to the recent posts container div element
-            recentPostsContainer.appendChild(postElement);
-        });
-    }
-
-    // get back to main page
-    const backMainPage = document.getElementById('back-to-main-page');
-    // Adds an event listener to navigate back to the main page on click
-    if (backMainPage) {
-        backMainPage.addEventListener('click', () => {
-            window.location.href = 'index.html';
+            quizEl.innerHTML = `
+                <h2>${quiz.question}</h2>
+                <p>${quiz.correct_answer}</p>
+            `; 
+            // Append the quiz element to the quiz container div element
+            classApiAnswer.appendChild(quizEl);
+            
+            // Iterate over incorrect answers and create <p> elements for each one
+            quiz.incorrect_answers.forEach(incorrectAnswer => {
+                const pElement = document.createElement('p');
+                pElement.textContent = incorrectAnswer;
+                classApiAnswer.appendChild(pElement);
+            });
         });
     }
 });
