@@ -20,6 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
+    // Function to shuffle an array using Fisher-Yates algorithm
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) { // for loop where integer is minor than the array size minus 1, the loop continues as long integer is greater than zero, and decrement by 1
+        const randomNumber = Math.floor(Math.random() * (i + 1)); // Generates a random number, uses Math.floor to not float the math.random, then the the random number generated,
+        [array[i], array[randomNumber]] = [array[randomNumber], array[i]];
+    }
+}
+
+// Shuffle the incorrect answers
+shuffleArray(newObject.incorrect_answers);
+
     questionTest.push(newObject);
 
 
@@ -45,4 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+    //Function to Select answer
+
+
+    //function to check answer as true or false
+    
+
 });
