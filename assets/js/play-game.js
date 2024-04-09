@@ -53,6 +53,23 @@ if (savedPosts) {
 
 
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+
+        
+//class1 progressBar
+//Class2 question - get from API https://opentdb.com/
+//Class3 MultipleChoices
+//Class4 Score
+=======
+>>>>>>> 66d0bb5f60e27931086f87828aa0dafbdc0190dc
 
 //02 Make a function that will retrive information from the API server
     //add eventListner  on DOMcontentLoad - to html load first
