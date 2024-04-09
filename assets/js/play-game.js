@@ -1,6 +1,16 @@
 //01 - target all the classes with querySelector.
         //Discuss with Anthony and Maria, how to set up classes and ids.
 
+
+
+
+
+
+
+
+
+
+        
 //class1 progressBar
 //Class2 question - get from API https://opentdb.com/
 //Class3 MultipleChoices
