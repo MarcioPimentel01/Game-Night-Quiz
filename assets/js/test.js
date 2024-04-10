@@ -26,4 +26,3 @@ questions.forEach(question => {
     // Append the post element to the recent posts container div element
     recentPostsContainer.appendChild(postElement);
 });
-
