@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const classApiQuestion = document.querySelector(`.api-question`)
     const classApiAnswer = document.querySelector(`.api-answer`)
 
+    //add an event Listener on the selected answer (this addEventListner is aiming the option that the user is clicking after seeing the question)
+    clickAnswer.addEventListener(`click`, goToNextQuestion)
+
     let ArrayGames = []
+    let currentQuestionIndex = 0 // keep track of the index of the current question in the quiz.
 
     async function loadQuestionGames() { // Test to change the loadQuestionGames using the try and catch block
         try {
@@ -37,103 +41,49 @@ document.addEventListener('DOMContentLoaded', () => {
             [answers[i], answers[randomNumber]] = [answers[randomNumber], answers[i]];
         }
     }
+
+    //function to display the question that was shuffled.
+
+    function displayQuestion(question) {
+        classApiQuestion.innerHTML = ``;
+        classApiAnswer.innerHTML = ``;
+
+        const questionDiv = document.createElement(`div`); // creates the element DIV inside our html
+        questionDiv.classList.add(`api-question`); // targeting my html class
+
+        const questionHeader = document.createElement('h2');
+        questionHeader.textContent = `Question ${currentQuestionIndex + 1}: ${question.question}`;
+        questionDiv.appendChild(questionHeader);
+
+        // Create a paragraph for each answer option
+        const answersParagraph = document.createElement('p');
+        answersParagraph.textContent = 'Answers:';
+        questionDiv.appendChild(answersParagraph);
     
+        // Shuffle answers
+        const answers = [...question.incorrect_answers, question.correct_answer];
+        shuffleArray(answers);
+    
+        // Display each answer
+        answers.forEach((answer, index) => {
+            const answerOption = document.createElement('p');
+            answerOption.textContent = `${index + 1}. ${answer}`;
+            classApiAnswer.appendChild(answerOption);
+        });
+    
+        // Append the question div to the container
+        classApiQuestion.appendChild(questionDiv);
+    }
+    
+    function displayNextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < ArrayGames.length) {
+            displayQuestion(ArrayGames[currentQuestionIndex]);
+        } else {
+            alert('No more questions available.');
+        }
+    }
+
     // Call the function to load games questions
     loadQuestionGames();
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     // Function to shuffle an array using Fisher-Yates algorithm
-//     function shuffleArray(incorrectArray, correct) {
-//         for (let i = incorrectArray.length - 1; i > 0; i--) { // for loop where integer is minor than the array size minus 1, the loop continues as long integer is greater than zero, and decrement by 1
-//         const randomNumber = Math.floor(Math.random() * (i + 1)); // Generates a random number, uses Math.floor to not float the math.random, then the the random number generated,
-//         [(incorrectArray[i], correct), (incorrectArray[randomNumber], correct)] = [(incorrectArray[randomNumber], correct), (incorrectArray[i], correct)];
-//     }
-// }
-
-// // Shuffle the incorrect answers
-// shuffleArray(newObject.incorrect_answers);
-
-//     questionTest.push(newObject);
-
-
-
-//     if (questionTest.length > 0) {
-//         // ForEach method used to create the div element throughout createElement
-//         questionTest.forEach(quiz => {
-//             const quizEl = document.createElement('div');
-//             quizEl.classList.add('api-question');
-//             // Populate the HTML element with post data
-//             quizEl.innerHTML = `
-//                 <h2>${quiz.question}</h2>
-//                 <p>${quiz.correct_answer}</p>
-//             `; 
-//             // Append the quiz element to the quiz container div element
-//             classApiAnswer.appendChild(quizEl);
-            
-//             // Iterate over incorrect answers and create <p> elements for each one
-//             quiz.incorrect_answers.forEach(incorrectAnswer => {
-//                 const pElement = document.createElement('p');
-//                 pElement.textContent = incorrectAnswer;
-//                 classApiAnswer.appendChild(pElement);
-//             });
-//         });
-//     }
-
-
-//     Function to Select answer
-
-
-//     function to check answer as true or false
-    
-
-// });
+});
