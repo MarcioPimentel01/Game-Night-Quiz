@@ -1,11 +1,15 @@
+function fixHtmlChar(text) {
+    var doc = new DOMParser().parseFromString(text, "text/html");
+    return doc.documentElement.textContent;
+}
 
 //preventes the javascript code to run before html finishes to load
 document.addEventListener('DOMContentLoaded', () => {
 
-    const classProgressBar = document.querySelector('.progress-bar'); // Selects the progress bar element - To be implemented
-    const classScoreCount = document.querySelector('.score-count'); // Selects the score count element - To be implemented
-    const classApiQuestion = document.querySelector('.api-question'); // Selects the API question element
-    const classApiAnswer = document.querySelector('.api-answer'); // Selects the API answer element
+    const classProgressBar = document.querySelector('.progress-bar');
+    const classScoreCount = document.querySelector('.score-count');
+    const classApiQuestion = document.querySelector('.api-question');
+    const classApiAnswer = document.querySelector('.api-answer');
 
     // Add an event Listener on the selected answer (this addEventListener is aiming the option that the user is clicking after seeing the question)
     // Replace `clickAnswer` with the appropriate selector for your answer buttons
@@ -18,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let ArrayGames = []; //recives objects retrieved from a JSON
+
+    // function removeQuotes () {
+
+    // }
 
     //To be implemented
     let currentQuestionIndex = 0; // Keep track of the index of the current question in the quiz.
@@ -56,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadQuestionGames() { // Test to change the loadQuestionGames using the try and catch block
         try {
-            const APIUrlGames = 'https://opentdb.com/api.php?amount=15';
+            const APIUrlGames = 'https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple';
             const resultGames = await fetch(APIUrlGames); // This const uses the fetch function to make a GET request to the API endpoint.
             const dataGames = await resultGames.json(); // The variable dataGames extracts the JSON from resultGames
             // Spread the elements of dataGames.results into ArrayGames
@@ -64,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (dataGames.results && dataGames.results.length > 0) { // If dataGames results and its length is greater than 0 starts a for of
                 for (const question of dataGames.results) { // For of creates an array to add correct answer with the wrong answer (array name = AllAnswers)
+
+                    question.question = fixHtmlChar(question.question);
+                    question.correct_answer = fixHtmlChar(question.correct_answer);
+                    question.incorrect_answers = question.incorrect_answers.map(answer => fixHtmlChar(answer));
                     const allAnswers = [...question.incorrect_answers, question.correct_answer];
                     shuffleArray(allAnswers); // Using the first code created, the Fisher-Yates algorithm on the allAnswers array
                     question.incorrect_answers = allAnswers.slice(1); // Divide the array into strings
