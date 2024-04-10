@@ -1,99 +1,108 @@
-const classProgressBar = document.querySelector(`progress-bar`)
-const classScoreCount = document.querySelector(`score-count`)
-const classApiQuestion = document.querySelector(`api-question`)
-const classApiAnswer = document.querySelector(`api-answer`)
+document.addEventListener('DOMContentLoaded', () => {
+
+    const classProgressBar = document.querySelector(`.progress-bar`)
+    const classScoreCount = document.querySelector(`.score-count`)
+    const classApiQuestion = document.querySelector(`.api-question`)
+    const classApiAnswer = document.querySelector(`.api-answer`)
 
 
-const questiontest = []
 
-const newObject = {
-    type: "multiple",
-    difficulty: "medium",
-    category: "Entertainment: Film",
-    question: "Which movie sequel had improved box office results compared to its original film?",
-    correct_answer: "Toy Story 2",
-    incorrect_answers: [
-    "Sin City: A Dame to Kill For",
-    "Speed 2: Cruise Control",
-    "Son of the Mask"
-    ]
-  };
-  
-questiontest.push(newObject);
-  
 
-if (savedPosts) {
-    const posts = JSON.parse(savedPosts);
 
-    // ForEach method used to create the div element throughout createElement
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
-        // Populate the HTML element with post data
-        postElement.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>${post.content}</p>
-            <p><b>By:</b> ${post.username}</p>
-            <p>${new Date().toLocaleString()}</p><br><hr>`; // I decided to add time for the post
-        // Append the post element to the recent posts container div element
-        recentPostsContainer.appendChild(postElement);
-    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Function to shuffle an array using Fisher-Yates algorithm
+    function shuffleArray(incorrectArray, correct) {
+        for (let i = incorrectArray.length - 1; i > 0; i--) { // for loop where integer is minor than the array size minus 1, the loop continues as long integer is greater than zero, and decrement by 1
+        const randomNumber = Math.floor(Math.random() * (i + 1)); // Generates a random number, uses Math.floor to not float the math.random, then the the random number generated,
+        [(incorrectArray[i], correct), (incorrectArray[randomNumber], correct)] = [(incorrectArray[randomNumber], correct), (incorrectArray[i], correct)];
+    }
 }
 
+// Shuffle the incorrect answers
+shuffleArray(newObject.incorrect_answers);
+
+    questionTest.push(newObject);
 
 
 
+    if (questionTest.length > 0) {
+        // ForEach method used to create the div element throughout createElement
+        questionTest.forEach(quiz => {
+            const quizEl = document.createElement('div');
+            quizEl.classList.add('api-question');
+            // Populate the HTML element with post data
+            quizEl.innerHTML = `
+                <h2>${quiz.question}</h2>
+                <p>${quiz.correct_answer}</p>
+            `; 
+            // Append the quiz element to the quiz container div element
+            classApiAnswer.appendChild(quizEl);
+            
+            // Iterate over incorrect answers and create <p> elements for each one
+            quiz.incorrect_answers.forEach(incorrectAnswer => {
+                const pElement = document.createElement('p');
+                pElement.textContent = incorrectAnswer;
+                classApiAnswer.appendChild(pElement);
+            });
+        });
+    }
 
 
+    Function to Select answer
 
 
+    function to check answer as true or false
+    
 
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-        
-//class1 progressBar
-//Class2 question - get from API https://opentdb.com/
-//Class3 MultipleChoices
-//Class4 Score
-=======
->>>>>>> 66d0bb5f60e27931086f87828aa0dafbdc0190dc
-
-//02 Make a function that will retrive information from the API server
-    //add eventListner  on DOMcontentLoad - to html load first
-
-//03 make a function that will parse the API information and display as a question
-    //add eventListner on click to identify the answer
-
-//04 function to select the answer
-
-//05 input the results into a array and stringfy into localstorage.
-
-//06 function to count the score
-
-//07 rediract to score/end page.w
-
-// Just for our reference, follows the 5 categories API links
-
-// Film category.
-// 01 https://opentdb.com/api.php?amount=10&category=11
-// TV and Entertainment
-// 02 https://opentdb.com/api.php?amount=10&category=14
-// Music
-// 03 https://opentdb.com/api.php?amount=10&category=12
-// Video Games
-// 04 https://opentdb.com/api.php?amount=10&category=15
-// General knowledge
-// 05 https://opentdb.com/api.php?amount=10&category=9'
+});
