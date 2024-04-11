@@ -59,11 +59,71 @@ async function loadQuestionGames() {
     }
 }
 
+<<<<<<< Updated upstream
 function shuffleArray(answers) {
     for (let i = answers.length - 1; i > 0; i--) {
         const randomNumber = Math.floor(Math.random() * (i + 1));
         [answers[i], answers[randomNumber]] = [answers[randomNumber], answers[i]];
     }
+=======
+questions.forEach(question => {
+    const postElement = document.createElement('div');
+    postElement.classList.add('api-answer');
+    // Populate the HTML element with post data
+    postElement.innerHTML =
+    
+    
+    `
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <p><b>By:</b> ${post.username}</p>
+        <p>${new Date().toLocaleString()}</p><br><hr>`; // I decided to add time for the post
+    // Append the post element to the recent posts container div element
+    recentPostsContainer.appendChild(postElement);
+});
+// if (incorrectArray.length > 0) {
+//     // ForEach method used to create the div element throughout createElement
+//     questionTest.forEach(quiz => {
+//         const quizEl = document.createElement('div');
+//         quizEl.classList.add('api-question');
+//         // Populate the HTML element with post data
+//         quizEl.innerHTML = `
+//             <h2>${quiz.question}</h2>
+//             <p>${quiz.correct_answer}</p>
+//         `; 
+//         // Append the quiz element to the quiz container div element
+//         classApiAnswer.appendChild(quizEl);
+        
+//         // Iterate over incorrect answers and create <p> elements for each one
+//         quiz.incorrect_answers.forEach(incorrectAnswer => {
+//             const pElement = document.createElement('p');
+//             pElement.textContent = incorrectAnswer;
+//             classApiAnswer.appendChild(pElement);
+//         });
+//     });
+// }
+
+if (questionTest.length > 0) {
+    // ForEach method used to create the div element throughout createElement
+    questionTest.forEach(quiz => {
+        const quizEl = document.createElement('div');
+        quizEl.classList.add('api-question');
+        // Populate the HTML element with post data
+        quizEl.innerHTML = `
+            <h2>${quiz.question}</h2>
+            <p>${quiz.correct_answer}</p>
+        `; 
+        // Append the quiz element to the quiz container div element
+        classApiAnswer.appendChild(quizEl);
+        
+        // Iterate over incorrect answers and create <p> elements for each one
+        quiz.incorrect_answers.forEach(incorrectAnswer => {
+            const pElement = document.createElement('p');
+            pElement.textContent = incorrectAnswer;
+            classApiAnswer.appendChild(pElement);
+        });
+    });
+>>>>>>> Stashed changes
 }
 
 // Call the function to load games questions
@@ -179,3 +239,11 @@ loadQuestionGames();
 //     // Call the function to load games questions
 //     loadQuestionGames();
 // });
+<<<<<<< Updated upstream
+=======
+
+
+
+
+//testing code line for github desktop
+>>>>>>> Stashed changes
