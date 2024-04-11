@@ -82,10 +82,4 @@ Takes two numbers and returns the sum.
 - adding this line to see if its working(hello)
 - Please add your user name and github accont here.
 testin edwin ver.2
-<<<<<<< HEAD
 -[@EdRivera016] https://github.com/EdRivera016
-=======
-- [@EdRivera016] https://github.com/EdRivera016
-- [@MarcioPimentel01](https://www.github.com/MarcioPimentel01)
-
->>>>>>> marcio
