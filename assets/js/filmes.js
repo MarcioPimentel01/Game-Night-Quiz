@@ -11,7 +11,8 @@ async function loadQuestionFilms() {
     }
 
     function retrivequiz(dataFilms) {
-        let correct 
+        let correctAnswer = dataFilms.correct_answer;
+        let incorrectAnswer = 
     }
 
 loadQuestionFilms() // I need to do something with the results, otherwiese the function will be calling non-stop
