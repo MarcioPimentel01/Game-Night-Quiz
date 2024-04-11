@@ -76,10 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     question.question = fixHtmlChar(question.question);
                     question.correct_answer = fixHtmlChar(question.correct_answer);
                     question.incorrect_answers = question.incorrect_answers.map(answer => fixHtmlChar(answer));
-                    const allAnswers = [...question.incorrect_answers, question.correct_answer];
+                    const allAnswers = [...question.incorrect_answers, question.correct_answer]; // Just in case `, question.correct_answer`
                     shuffleArray(allAnswers); // Using the first code created, the Fisher-Yates algorithm on the allAnswers array
-                    question.incorrect_answers = allAnswers.slice(1); // Divide the array into strings
-                    question.correct_answer = allAnswers[0];
+                    const rightAnswer = allAnswers.findIndex(answer => answer === question.correct_answer)
+                    question.correct_answer = allAnswers[rightAnswer];
+                    allAnswers.splice(rightAnswer, 1);
+                    question.incorrect_answers = allAnswers;
+                    
+                    // const isLargeNumber = (element) => element > 13;
+                    // const array1 = [5, 12, 8, 130, 44];
+                    // console.log(array1.findIndex(isLargeNumber));
+                    // // Expected output: 3
+                    
+                    // const allAnsewrsPlusCorrect = [...allAnswers, question.correct_answer];
+                    
                 }
             }
 
