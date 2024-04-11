@@ -71,7 +71,7 @@ questions.forEach(question => {
     postElement.classList.add('api-answer');
     // Populate the HTML element with post data
     postElement.innerHTML =
-    
+
     
     `
         <h3>${post.title}</h3>
