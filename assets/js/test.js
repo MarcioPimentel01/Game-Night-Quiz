@@ -59,13 +59,11 @@ async function loadQuestionGames() {
     }
 }
 
-<<<<<<< Updated upstream
 function shuffleArray(answers) {
     for (let i = answers.length - 1; i > 0; i--) {
         const randomNumber = Math.floor(Math.random() * (i + 1));
         [answers[i], answers[randomNumber]] = [answers[randomNumber], answers[i]];
-    }
-=======
+    }}
 questions.forEach(question => {
     const postElement = document.createElement('div');
     postElement.classList.add('api-answer');
@@ -123,7 +121,6 @@ if (questionTest.length > 0) {
             classApiAnswer.appendChild(pElement);
         });
     });
->>>>>>> Stashed changes
 }
 
 // Call the function to load games questions
@@ -239,11 +236,8 @@ loadQuestionGames();
 //     // Call the function to load games questions
 //     loadQuestionGames();
 // });
-<<<<<<< Updated upstream
-=======
 
 
 
 
 //testing code line for github desktop
->>>>>>> Stashed changes
