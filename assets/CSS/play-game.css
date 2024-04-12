@@ -2,5 +2,13 @@
     
     display: flex;
     flex-direction: column;
+    font-size: xx-large;
+    color: hotpink;
 
+
+}
+
+.api-question{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
 }
