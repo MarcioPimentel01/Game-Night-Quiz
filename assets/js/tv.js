@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         displayQuestion();
 
         function displayQuestion(question) { // Function to display the question that was shuffled.
-            classApiQuestion.innerHTML = ''; // Set as a empty element - clears the content inside the HTML element selected by the variable classApiQuestion
-            classApiAnswer.innerHTML = ''; // Set as a empty element just like the one above
+            classApiQuestion.innerHTML = ''; 
+            classApiAnswer.innerHTML = ''; 
 
             
             function goToNextQuestion(selectedAnswer) {
