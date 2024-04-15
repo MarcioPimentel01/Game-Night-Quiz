@@ -1,4 +1,4 @@
-let ArrayFilms = []
+let ArrayFilms = [gi]
 let ArrayMusic = []
 let ArrayTv = []
 let ArrayGk = []
