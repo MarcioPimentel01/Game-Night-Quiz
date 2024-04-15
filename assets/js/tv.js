@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(correctAnswer); // Display the right one.
         }
 
-        displayQuestion();
+        //displayQuestion();
 
         function displayQuestion(question) { // Function to display the question that was shuffled.
             classApiQuestion.innerHTML = ''; 
