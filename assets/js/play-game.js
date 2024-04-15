@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const questionHeader = document.createElement('h2'); // creates h2 element
         questionHeader.textContent = `Question ${currentQuestionIndex + 1}: ${question.question}`; //This line sets the textContent property of the questionHeader element. 
         questionDiv.appendChild(questionHeader);                                                   //It creates a string that represents the question, including its index 
-                                                                                                   //(based on currentQuestionIndex) and the actual question text retrieved 
+        //(based on currentQuestionIndex) and the actual question text retrieved 
         const answers = [...question.incorrect_answers, question.correct_answer];                  //from the question object.
         //const answer returns an array with the correct answer together with the incorrect ones
 
@@ -82,14 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     question.correct_answer = allAnswers[rightAnswer];
                     allAnswers.splice(rightAnswer, 1);
                     question.incorrect_answers = allAnswers;
-                    
+
                     // const isLargeNumber = (element) => element > 13;
                     // const array1 = [5, 12, 8, 130, 44];
                     // console.log(array1.findIndex(isLargeNumber));
                     // // Expected output: 3
-                    
+
                     // const allAnsewrsPlusCorrect = [...allAnswers, question.correct_answer];
-                    
+
                 }
             }
 
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) { // Displays a message saying that couldn't fetch the question from the API Serve
             console.error("Error fetching games questions:", error);
-            
+
         }
     }
 
