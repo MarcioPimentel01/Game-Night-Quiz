@@ -1,93 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let currentQuestionIndex = 0;
+    let dataTv; // Define dataTv outside of any function scope
 
+    loadQuestionTv();
+  
+    function loadQuestionTv() {
+        try {
+            const APIUrlTv = 'https://opentdb.com/api.php?amount=10&category=14&difficulty=medium&type=multiple';
+            const resultsfetch(APIUrlTv)
+                .then(response => response.json())
+                .then(data => {
+                    dataTv = data;
+                    if (dataTv.results && dataTv.results.length > 0) {
+                        retrieveQuiz(dataTv.results[0]);
+                    } else {
+                        console.error("No questions found in the API response.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching games questions:", error);
+                });
+        } catch (error) {
+            console.error("Error fetching games questions:", error);
+        }
+    }
+
+    function retrieveQuiz(questionData) {
+        let correctAnswer = questionData?.correct_answer;
+        let incorrectAnswer = questionData?.incorrect_answers;
+
+        if (correctAnswer && incorrectAnswer) {
+            let optionsList = [...incorrectAnswer];
+            optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+            console.log(optionsList);
+            console.log(correctAnswer);
+        } else {
+            console.error("Missing data in question object.");
+        }
+    }
+
+    function displayQuestion(question) {
         const classApiQuestion = document.querySelector('.api-question');
         const classApiAnswer = document.querySelector('.api-answer');
-
-        let currentQuestionIndex = 0
-
-        async function loadQuestionTv() {
-            try {
-                const APIUrlTv = 'https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple';
-                const resultTv = await fetch(APIUrlTv);
-                const dataTv = await resultTv.json();
-                retrieveQuiz(dataTv.results[0]); // Call retrieveQuiz after fetching data
-            } catch (error) {
-                console.error("Error fetching games questions:", error);
-            }
-        }
         
-        function retrieveQuiz(dataTv) {
-          
-                let correctAnswer = dataTv.correct_answer;
-                let incorrectAnswer = dataTv.incorrect_answers;
-                let optionsList = [...incorrectAnswer];
-                optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer); // Fisher-Yates algorithm
-        
-                console.log(optionsList); // Displays shuffled answers, including the right one
-                console.log(correctAnswer); // Display the right one.
-        }
+        classApiQuestion.innerHTML = '';
+        classApiAnswer.innerHTML = '';
 
-        //displayQuestion();
-
-        function displayQuestion(question) { // Function to display the question that was shuffled.
-            classApiQuestion.innerHTML = ''; 
-            classApiAnswer.innerHTML = ''; 
-
-            
-            function goToNextQuestion(selectedAnswer) {
-                let currentQuestionIndex = currentQuestionIndex + 1;
-                if (currentQuestionIndex < dataTv.length) { 
-                    displayQuestion(dataTv[currentQuestionIndex])
-                } else {
-                    alert('No more questions available.');
-                }
-                
-                if (selectedAnswer === dataTv[currentQuestionIndex - 1].correct_answer) {
-                    alert('Correct!'); //alert to be changed Please
-                } else {
-                    alert(`Incorrect. The correct answer is: ${dataTv[currentQuestionIndex - 1].correct_answer}`);
-                }
-                
-            }
-            
-            goToNextQuestion();
-
-            const questionDiv = document.createElement('div'); // that one just creates the element Div targeting the api-questions just like the blog-form challenge
-            questionDiv.classList.add('api-question');
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('api-question');
     
-            const questionHeader = document.createElement('h2'); // creates h2 element
-            questionHeader.textContent = `Question ${currentQuestionIndex + 1}: ${question.question}`; //This line sets the textContent property of the questionHeader element. 
-            questionDiv.appendChild(questionHeader);                                                   //It creates a string that represents the question, including its index 
-                                                                                                       //(based on currentQuestionIndex) and the actual question text retrieved 
-            const answers = [...question.incorrect_answers, question.correct_answer];                  //from the question object.
-            //const answer returns an array with the correct answer together with the incorrect ones
+        const questionHeader = document.createElement('h2');
+        questionHeader.textContent = `Question ${currentQuestionIndex + 1}: ${question.question}`;
+        questionDiv.appendChild(questionHeader);
     
-            answers.forEach((answer, index) => {
-                const answerButton = document.createElement('button');
-                answerButton.classList.add('answer-option'); // Add a class for styling
-                answerButton.textContent = `${index + 1}. ${answer}`;
-                classApiAnswer.appendChild(answerButton);
+        const answers = [...question.incorrect_answers, question.correct_answer];
+    
+        answers.forEach((answer, index) => {
+            const answerButton = document.createElement('button');
+            answerButton.textContent = answer; // Set button text
+            // Add event listener for answerButton click event
+            answerButton.addEventListener('click', () => {
+                goToNextQuestion(answer);
             });
-    
-            classApiQuestion.appendChild(questionDiv); //Appends the question container (questionDiv) to the classApiQuestion element
+            classApiAnswer.appendChild(answerButton);
+        });      
+    }
+
+    function goToNextQuestion(selectedAnswer) {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < dataTv.results.length) {
+            displayQuestion(dataTv.results[currentQuestionIndex]);
+        } else {
+            alert('No more questions available.');
         }
-        
-        loadQuestionTv(); // Call loadQuestionTv to start the process
-        
-});      
-    
-    //Function to display question creating element
 
-
-
-
-
-    //02 loop to invoke loadQuestionTV
-
-
-
-
-
-
-
-
+        if (selectedAnswer === dataTv.results[currentQuestionIndex - 1]?.correct_answer) {
+            alert('Correct!');
+        } else {
+            alert(`Incorrect. The correct answer is: ${dataTv.results[currentQuestionIndex - 1]?.correct_answer}`);
+        }
+    }
+});
