@@ -52,7 +52,6 @@ async function loadQuestionGames() {
                 question.correct_answer = allAnswers[0];
             }
         }
-
     } catch (error) {
         console.error("Error fetching games questions:", error);
         // Handle the error gracefully, e.g., display an error message to the user
