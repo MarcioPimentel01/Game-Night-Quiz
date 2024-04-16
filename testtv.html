@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TV Quiz</title>
+    <!-- Link to your CSS file if needed -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
     <div class="progress-bar">
-        <!-- the progess bar goes here -->
+        <!-- Progress bar -->
         <p>Please wait while questions are loading...</p>
-        <div class="score-count">0</div> <div class="total-questions"></div>
+        <span class="score-count">0</span> 
+        <span class="total-questions">/ 10</span> <!-- Displaying total questions -->
     </div>
-    <div class="api-question">
-        
+    <div class="quiz-container">
+        <div class="api-question">
+            <!-- Display question here -->
+        </div>
+        <div class="api-answer">
+            <!-- Display answer options here -->
+        </div>
+        <div id="result">
+            <!-- Display result here -->
+        </div>
+        <button id="check-answer">Check Answer</button>
+        <button id="play-again" style="display: none;">Play Again</button>
     </div>
-    <div class="api-answer">
-       
-    </div>
-
 
     <script src="./assets/js/tv.js"></script>
-
-
 </body>
 </html>
