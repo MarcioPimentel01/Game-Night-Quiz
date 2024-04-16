@@ -1,243 +1,155 @@
-let ArrayFilms = [gi]
-let ArrayMusic = []
-let ArrayTv = []
-let ArrayGk = []
-let ArrayGames = []
+document.addEventListener('DOMContentLoaded', () => {
+    const classApiQuestion = document.querySelector('.api-question');
+    const classApiAnswer = document.querySelector('.api-answer');
+    let currentQuestionIndex = 0;
+    let data = {};
 
-async function loadQuestionFilms() {
-    const APIUrlFilms = 'https://opentdb.com/api.php?amount=11';
-    const resultFilms = await fetch(APIUrlFilms);
-    const dataFilms = await resultFilms.json();
-    ArrayFilms.push(dataFilms.results);
-    return dataFilms;
-    
-}
+    async function loadQuestions() {
+        try {
+            const categories = [
+                { name: 'films', url: 'https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple' },
+                { name: 'tv', url: 'https://opentdb.com/api.php?amount=10&category=17&difficulty=medium&type=multiple' },
+                { name: 'music', url: 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple' },
+                { name: 'games', url: 'https://opentdb.com/api.php?amount=10&category=21&difficulty=medium&type=multiple' }
+                { name: 'general knowledge', url: 'https://opentdb.com/api.php?amount=10&category=21&difficulty=medium&type=multiple' }
 
-async function loadQuestionMusic () {
-    const APIUrlMusic = 'https://opentdb.com/api.php?amount=12';
-    const resultMusic = await fetch(`${APIUrlMusic}`);
-    const dataMusic = resultMusic.json();
-    ArrayMusic.push(dataMusic);
-    console.log(dataMusic)
-}
-async function loadQuestionTv () {
-    const APIUrlTv = 'https://opentdb.com/api.php?amount=14';
-    const resultTv = await fetch(`${APIUrlTv}`);
-    const dataTv = await resultTv.json();
-    ArrayTv.push(dataTv);
-    console.log(dataTv)
-}
-async function loadQuestionGk() {
-    const APIUrlGk = 'https://opentdb.com/api.php?amount=10&category=9';
-    const resultGk = await fetch(`${APIUrlGk}`);
-    const dataGk = await resultGk.json();
-    ArrayGk.push(dataGk);
-    console.log(dataGk);
-}
-async function loadQuestionGames() {
-    try {
-        const APIUrlGames = 'https://opentdb.com/api.php?amount=15';
-        const resultGames = await fetch(APIUrlGames);
-        const dataGames = await resultGames.json();
+                // Add more categories here if needed
+            ];
 
-        // Push only the results array:
-        ArrayGames.push(dataGames.results);
-
-        // Integrate shuffle logic (if desired):
-        if (dataGames.results && dataGames.results.length > 0) {
-            for (const question of dataGames.results) {
-                const allAnswers = [...question.incorrect_answers, question.correct_answer];
-                shuffleArray(allAnswers);
-                question.incorrect_answers = allAnswers.slice(1);
-                question.correct_answer = allAnswers[0];
+            // Load questions from each category
+            for (const category of categories) {
+                const result = await fetch(category.url);
+                data[category.name] = await result.json();
             }
+
+            // Display the first question after loading
+            displayQuestion(categories[0].name, data[categories[0].name].results[currentQuestionIndex]);
+        } catch (error) {
+            console.error("Error fetching questions:", error);
+        }
+    }
+
+    classApiAnswer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('answer-option')) {
+            const selectedAnswer = event.target.textContent.split('. ')[1];
+            goToNextQuestion(selectedAnswer);
+        }
+    });
+
+    function displayQuestion(categoryName, question) {
+        classApiQuestion.innerHTML = '';
+        classApiAnswer.innerHTML = '';
+
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('api-question');
+
+        const questionHeader = document.createElement('h2');
+        questionHeader.textContent = `${categoryName} - Question ${currentQuestionIndex + 1}: ${question.question}`;
+        questionDiv.appendChild(questionHeader);
+
+        const answers = [...question.incorrect_answers, question.correct_answer];
+
+        answers.forEach((answer, index) => {
+            const answerButton = document.createElement('button');
+            answerButton.classList.add('answer-option');
+            answerButton.textContent = `${index + 1}. ${answer}`;
+            classApiAnswer.appendChild(answerButton);
+        });
+
+        classApiQuestion.appendChild(questionDiv);
+    }
+
+    function goToNextQuestion(selectedAnswer) {
+        currentQuestionIndex++;
+        const categories = Object.keys(data);
+        if (currentQuestionIndex < data[categories[0]].results.length) {
+            displayQuestion(categories[0], data[categories[0]].results[currentQuestionIndex]);
+        } else {
+            alert('No more questions available.');
         }
 
-    } catch (error) {
-        console.error("Error fetching games questions:", error);
-        // Handle the error gracefully, e.g., display an error message to the user
+        if (selectedAnswer === data[categories[0]].results[currentQuestionIndex - 1].correct_answer) {
+            alert('Correct!');
+        } else {
+            alert(`Incorrect. The correct answer is: ${data[categories[0]].results[currentQuestionIndex - 1].correct_answer}`);
+        }
     }
-}
 
-function shuffleArray(answers) {
-    for (let i = answers.length - 1; i > 0; i--) {
-        const randomNumber = Math.floor(Math.random() * (i + 1));
-        [answers[i], answers[randomNumber]] = [answers[randomNumber], answers[i]];
-    }}
-questions.forEach(question => {
-    const postElement = document.createElement('div');
-    postElement.classList.add('api-answer');
-    // Populate the HTML element with post data
-    postElement.innerHTML =
+    loadQuestions();
 
-    
-    `
-        <h3>${post.title}</h3>
-        <p>${post.content}</p>
-        <p><b>By:</b> ${post.username}</p>
-        <p>${new Date().toLocaleString()}</p><br><hr>`; // I decided to add time for the post
-    // Append the post element to the recent posts container div element
-    recentPostsContainer.appendChild(postElement);
 });
-// if (incorrectArray.length > 0) {
-//     // ForEach method used to create the div element throughout createElement
-//     questionTest.forEach(quiz => {
-//         const quizEl = document.createElement('div');
-//         quizEl.classList.add('api-question');
-//         // Populate the HTML element with post data
-//         quizEl.innerHTML = `
-//             <h2>${quiz.question}</h2>
-//             <p>${quiz.correct_answer}</p>
-//         `; 
-//         // Append the quiz element to the quiz container div element
-//         classApiAnswer.appendChild(quizEl);
-        
-//         // Iterate over incorrect answers and create <p> elements for each one
-//         quiz.incorrect_answers.forEach(incorrectAnswer => {
-//             const pElement = document.createElement('p');
-//             pElement.textContent = incorrectAnswer;
-//             classApiAnswer.appendChild(pElement);
-//         });
-//     });
-// }
 
-if (questionTest.length > 0) {
-    // ForEach method used to create the div element throughout createElement
-    questionTest.forEach(quiz => {
-        const quizEl = document.createElement('div');
-        quizEl.classList.add('api-question');
-        // Populate the HTML element with post data
-        quizEl.innerHTML = `
-            <h2>${quiz.question}</h2>
-            <p>${quiz.correct_answer}</p>
-        `; 
-        // Append the quiz element to the quiz container div element
-        classApiAnswer.appendChild(quizEl);
-        
-        // Iterate over incorrect answers and create <p> elements for each one
-        quiz.incorrect_answers.forEach(incorrectAnswer => {
-            const pElement = document.createElement('p');
-            pElement.textContent = incorrectAnswer;
-            classApiAnswer.appendChild(pElement);
-        });
-    });
-}
-
-// Call the function to load games questions
-loadQuestionGames();
 
 // document.addEventListener('DOMContentLoaded', () => {
+//     const classApiQuestion = document.querySelector('.api-question');
+//     const classApiAnswer = document.querySelector('.api-answer');
 
-//     const classProgressBar = document.querySelector(`.progress-bar`); // Selects the progress bar element
-//     const classScoreCount = document.querySelector(`.score-count`); // Selects the score count element
-//     const classApiQuestion = document.querySelector(`.api-question`); // Selects the API question element
-//     const classApiAnswer = document.querySelector(`.api-answer`); // Selects all API answer elements
-
-
-//     // Add an event Listener on the selected answer (this addEventListener is aiming the option that the user is clicking after seeing the question)
-//     clickAnswer.addEventListener(`click`, goToNextQuestion)
-
-//     let ArrayGames = [];
-//     let currentQuestionIndex = 0; // Keep track of the index of the current question in the quiz.
-
-//     async function loadQuestionGames() { // Test to change the loadQuestionGames using the try and catch block
+//     async function loadQuestionTv() {
 //         try {
-//             const APIUrlGames = 'https://opentdb.com/api.php?amount=15';
-//             const resultGames = await fetch(APIUrlGames); // This const uses the fetch function to make a GET request to the API endpoint.
-//             const dataGames = await resultGames.json();  // The variable dataGames extracts the JSON from resultGames
-//             // Push only the results array:
-//             ArrayGames.push(...dataGames.results); // Juan pushed only the results into the array 
-
-//             // Integrate shuffle logic (if desired):
-//             if (dataGames.results && dataGames.results.length > 0) { // If dataGames results and its length is greater than 0 starts a for of
-//                 for (const question of dataGames.results) {  // For of creates an array to add correct answer with the wrong answer (array name = AllAnswers)
-//                     const allAnswers = [...question.incorrect_answers, question.correct_answer];
-//                     shuffleArray(allAnswers); // Using the first code created, the Fisher-Yates algorithm on the allAnswers array
-//                     question.incorrect_answers = allAnswers.slice(1); // Divide the array into strings
-//                     question.correct_answer = allAnswers[0];
-//                 }
-//             }
-    
+//             const APIUrlTv = 'https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple';
+//             const resultTv = await fetch(APIUrlTv);
+//             const dataTv = await resultTv.json();
+//             retrieveQuiz(dataTv.results[0]); // Call retrieveQuiz after fetching data
 //         } catch (error) {
 //             console.error("Error fetching games questions:", error);
-//             // Displays a message saying that couldn't fetch the question from the API Server
 //         }
 //     }
 
-//     function shuffleArray(answers) { // Fisher-Yates algorithm, I changed the const "j" by "randomNumber" to better understand the algorithm
-//         for (let i = answers.length - 1; i > 0; i--) {
-//             const randomNumber = Math.floor(Math.random() * (i + 1));
-//             [answers[i], answers[randomNumber]] = [answers[randomNumber], answers[i]];
+//     classApiAnswer.addEventListener('click', (event) => {
+//         if (event.target.classList.contains('answer-option')) {
+//             const selectedAnswer = event.target.textContent.split('. ')[1];
+//             goToNextQuestion(selectedAnswer);
 //         }
+//     });
+
+//     function retrieveQuiz(dataTv) {
+//         let correctAnswer = dataTv.correct_answer;
+//         let incorrectAnswer = dataTv.incorrect_answers;
+//         let optionsList = [...incorrectAnswer];
+//         optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer); // Fisher-Yates algorithm
+//         console.log(optionsList); // Displays shuffled answers, including the right one
+//         console.log(correctAnswer); // Display the right one.
+//         loadQuestionTv();
 //     }
 
-//     // Function to display the question that was shuffled.
 //     function displayQuestion(question) {
-//         classApiQuestion.innerHTML = ``;
-//         classApiAnswer.innerHTML = ``;
-      
-//         const questionDiv = document.createElement(`div`);
-//         questionDiv.classList.add(`api-question`);
-      
+//         classApiQuestion.innerHTML = '';
+//         classApiAnswer.innerHTML = '';
+
+//         const questionDiv = document.createElement('div');
+//         questionDiv.classList.add('api-question');
+
 //         const questionHeader = document.createElement('h2');
 //         questionHeader.textContent = `Question ${currentQuestionIndex + 1}: ${question.question}`;
 //         questionDiv.appendChild(questionHeader);
-        
-        
 
-
-    
-//         // Shuffle answers
 //         const answers = [...question.incorrect_answers, question.correct_answer];
-//         shuffleArray(answers);
-      
+
 //         answers.forEach((answer, index) => {
 //             const answerButton = document.createElement('button');
-//             answerButton.classList.add('answer-option'); // Add a class for styling
+//             answerButton.classList.add('answer-option');
 //             answerButton.textContent = `${index + 1}. ${answer}`;
-        
-//             // Add event listener to each button (explained later)
-//             answerButton.addEventListener('click', () => {
-//               goToNextQuestion(answer); // Pass the answer to the function
-//             });
-        
 //             classApiAnswer.appendChild(answerButton);
-//           });
-        
-//           classApiQuestion.appendChild(questionDiv);
-//         }
-    
-//     function goToNextQuestion() {
+//         });
+
+//         classApiQuestion.appendChild(questionDiv);
+//     }
+
+//     function goToNextQuestion(selectedAnswer) {
 //         currentQuestionIndex++;
-      
-//         // Check if there are more questions
-//         if (currentQuestionIndex < ArrayGames.length) {
-//           displayQuestion(ArrayGames[currentQuestionIndex]);
+//         if (currentQuestionIndex < dataTv.length) {
+//             displayQuestion(dataTv[currentQuestionIndex]);
 //         } else {
-//           alert('No more questions available.');
-//           // Add logic to display final score or results here (optional)
+//             alert('No more questions available.');
 //         }
-      
 
-      
-//         // Check if the selected answer is correct
-//         if (selectedAnswer === ArrayGames[currentQuestionIndex - 1].correct_answer) {
-//           // Update score (assuming you have a score variable)
-//           score++;
-//           // Provide feedback to the user (e.g., display a "Correct!" message)
-//           alert('Correct!');
+//         if (selectedAnswer === dataTv[currentQuestionIndex - 1].correct_answer) {
+//             alert('Correct!');
 //         } else {
-//           // Provide feedback to the user (e.g., display the correct answer and an "Incorrect" message)
-//           alert(`Incorrect. The correct answer is: ${ArrayGames[currentQuestionIndex - 1].correct_answer}`);
+//             alert(`Incorrect. The correct answer is: ${dataTv[currentQuestionIndex - 1].correct_answer}`);
 //         }
-//       }
-      
+//     }
 
-//     // Call the function to load games questions
-//     loadQuestionGames();
+//     loadQuestionTv();
+
 // });
-
-
-
-
-//testing code line for github desktop
