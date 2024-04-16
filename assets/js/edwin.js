@@ -1,3 +1,43 @@
+//https://opentdb.com/api.php?amount=10&category=12
+
+
+
+
+async function loadQuestionMusic() {
+const APIUrlMusic = 'https://opentdb.com/api.php?amount=10&category=12';
+const result = await fetch(`${APIUrlMusic}`);
+const data = await result.json();
+console.log(data)
+}
+loadQuestionMusic();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // document.addEventListener('DOMContentLoaded', () => {
 //     const question = document.getElementById('question');
 //     const choices = Array.from(document.getElementsByClassName('choice-text'));
