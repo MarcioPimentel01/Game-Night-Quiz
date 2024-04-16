@@ -1,6 +1,11 @@
 const questionwindow = document.getElementById('question')
 const answerwindow = document.getElementById('answers')
 
+function fixHtmlChar(text) {
+    var doc = new DOMParser().parseFromString(text, "text/html");
+    return doc.documentElement.textContent;
+}
+
 const Filmdata = [];
 let questions = [];
 let answerpool = [];
@@ -33,42 +38,67 @@ for (let i=0;i<Filmdata.length;i++) {
 } 
 }
 
-orgQuestions()
 
 
-function addQuestion () {
+async function addQuestion () {
+    await orgQuestions()
+    for (let i=0;i<questions.length; i++) {
    const questiontxt = document.createElement('h2')
-   questiontxt.innerText = `${questions[0].ask}`
+   questiontxt.innerText = fixHtmlChar(`${questions[i].ask}`)
    document.getElementById('question').appendChild(questiontxt)
+    answerpool[i].forEach(element => {
+        const answerbtn = document.createElement('button')
+        answerbtn.innerText = fixHtmlChar(`${element}`)
+        document.getElementById('question').appendChild(answerbtn);
+    })
+    }
 }
 
-function addBtn () {  
-    for (let i=0;i<1; i++) {
-        let currentQuestion = answerpool[i]
-        currentQuestion.forEach(element => {
-        const answerbtn = document.createElement('button')
-        answerbtn.innerText = `${element}`
-        document.getElementById('answers').appendChild(answerbtn);
-        })
-
-}}
-
-
-answerwindow.addEventListener('click',(event)=> {
-   let input = event.target.innerText
-   console.log(input)
-   selected.push(input)
+answerwindow.addEventListener('click', (event) => {
+    check()
 })
+
+async function submitbtn() {
+    await addQuestion()
+    const submit = document.createElement('button')
+    submit.innerText = 'Submit'
+    document.getElementById('answers').appendChild(submit)
+}
+
+submitbtn()
 
 function check () {
     for (i=0;i<selected.length;i++)
-    if (selected[i]==rightanswer[i]) {
-        console.log('right')
-
-    } else {
-        console.log('wrong')
+    if (selected.length = 10) {
+        if (selected[i]==rightanswer[i]) {
+            console.count('right_answers')
+            console.log('right')
+            alert(`question ${i+1}: ${fixHtmlChar(questions[i].ask)}...
+            you picked the right answer!! ${fixHtmlChar(rightanswer[i])},
+             good job`)
+    
+        } else {
+            console.count('wrong_answers')
+            console.log('wrong')
+            alert(`question ${i+1}: ${fixHtmlChar(questions[i].ask)}...
+             you picked incorrectly!!! ${selected[i]}
+              the correct answer is ${fixHtmlChar(rightanswer[i])}!!`)
+        }
     }
+   else {
+    alert('finish')
+   }
 }
+
+questionwindow.addEventListener('click',(event)=> {
+   let input = event.target.innerText
+   selected.push(input)
+   console.log(input)
+})
+
+
+
+
 // async function loadQuestionFilms() {
 //     const APIUrlFilms = 'https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple';
 //     const resultFilms = await fetch(APIUrlFilms);

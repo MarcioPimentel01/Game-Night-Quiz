@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .api-answer {
     
     display: flex;
@@ -13,3 +17,6 @@
     font-size: xx-large;
     
 }
+
+h2 {
+    display: flex; }
