@@ -1,17 +1,27 @@
 //https://opentdb.com/api.php?amount=10&category=12
 
 
+const question = document.querySelector('.api-question');
+const answer = document.querySelector('.api-answer')
 
 
 async function loadQuestionMusic() {
 const APIUrlMusic = 'https://opentdb.com/api.php?amount=10&category=12';
 const result = await fetch(`${APIUrlMusic}`);
 const data = await result.json();
-console.log(data)
+//console.log(data.results[0]);
+displayQuestion(data.results[0]);
 }
+
+
+function displayQuestion(data) {
+let correctAnswer = data.correct_answer;
+let incorrectAnswer = data.incorrect_answer;
+let optionsList = incorrectAnswer;
+optionsList.splice(Math.floor(Math.floor() * ()))
+}
+
 loadQuestionMusic();
-
-
 
 
 
@@ -182,56 +192,56 @@ loadQuestionMusic();
 
 
 
-//Fixing HTML characters
-function fixHtmlChar(text) {
-    var doc = new DOMParser().parseFromString(text, "text/html");
-    return doc.documentElement.textContent;
-}
-// event listeners for DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-    const classApiAnswer = document.querySelector('.api-answer');
-    // classApiAnswer.addEventListener('click', handleAnswerClick);
-    let ArrayMusic = [];
-    let currentQuestionIndex = 0;
-
-    loadQuestionMusic();
-});
-
-
-// Function to process and shuffle answers
-// function processAnswers(question) {
-//     question.question = fixHtmlChar(question.question);
-//     question.correct_answer = fixHtmlChar(question.correct_answer);
-//     question.incorrect_answers = question.incorrect_answers.map(answer => fixHtmlChar(answer));
-//     const allAnswers = [...question.incorrect_answers, question.correct_answer];
-//     shuffleArray(allAnswers);
-
-//     const rightAnswerIndex = allAnswers.findIndex(answer => answer === question.correct_answer);
-//     question.correct_answer = allAnswers[rightAnswerIndex];
-//     allAnswers.splice(rightAnswerIndex, 1);
-//     question.incorrect_answers = allAnswers;
+// //Fixing HTML characters
+// function fixHtmlChar(text) {
+//     var doc = new DOMParser().parseFromString(text, "text/html");
+//     return doc.documentElement.textContent;
 // }
-// Fucntion to fecth and load game questions
-async function loadQuestionMusic(ArrayMusic) {
-    try {
-        const APIUrlMusic = 'https://opentdb.com/api.php?amount=10&category=12';
-        const resultMusic = await fetch(APIUrlMusic);
-        const dataMusic = await resultMusic.json();
-        const questions = dataMusic.results;
-        console.log(dataMusic.results[0]);
-        ArrayMusic.push(...dataMusic.results);
+// // event listeners for DOMContentLoaded
+// document.addEventListener('DOMContentLoaded', () => {
+//     const classApiAnswer = document.querySelector('.api-answer');
+//     // classApiAnswer.addEventListener('click', handleAnswerClick);
+//     let ArrayMusic = [];
+//     let currentQuestionIndex = 0;
 
-        if (!dataMusic.results || dataMusic.results.length === 0) {
-            throw new Error('No questions found in the API response');
-        }
+//     loadQuestionMusic();
+// });
+
+
+// // Function to process and shuffle answers
+// // function processAnswers(question) {
+// //     question.question = fixHtmlChar(question.question);
+// //     question.correct_answer = fixHtmlChar(question.correct_answer);
+// //     question.incorrect_answers = question.incorrect_answers.map(answer => fixHtmlChar(answer));
+// //     const allAnswers = [...question.incorrect_answers, question.correct_answer];
+// //     shuffleArray(allAnswers);
+
+// //     const rightAnswerIndex = allAnswers.findIndex(answer => answer === question.correct_answer);
+// //     question.correct_answer = allAnswers[rightAnswerIndex];
+// //     allAnswers.splice(rightAnswerIndex, 1);
+// //     question.incorrect_answers = allAnswers;
+// // }
+// // Fucntion to fecth and load game questions
+// async function loadQuestionMusic(ArrayMusic) {
+//     try {
+//         const APIUrlMusic = 'https://opentdb.com/api.php?amount=10&category=12';
+//         const resultMusic = await fetch(APIUrlMusic);
+//         const dataMusic = await resultMusic.json();
+//         const questions = dataMusic.results;
+//         console.log(dataMusic.results[0]);
+//         ArrayMusic.push(...dataMusic.results);
+
+//         if (!dataMusic.results || dataMusic.results.length === 0) {
+//             throw new Error('No questions found in the API response');
+//         }
        
-        ArrayMusic.forEach(processAnswers)
+//         ArrayMusic.forEach(processAnswers)
 
-        displayQuestion(ArrayMusic[currentQuestionIndex]);
-    } catch (error) {
-        console.error("Error fetching games questions;", error);
-    }
-}
+//         displayQuestion(ArrayMusic[currentQuestionIndex]);
+//     } catch (error) {
+//         console.error("Error fetching games questions;", error);
+//     }
+// }
 
 //function to go next question
 // function goToNextQuestion(selectedAnswer) {
