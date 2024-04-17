@@ -20,3 +20,8 @@
 
 h2 {
     display: flex; }
+
+
+    button {
+        background-color: blue;
+    }
