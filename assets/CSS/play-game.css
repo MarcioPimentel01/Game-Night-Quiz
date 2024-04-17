@@ -1,6 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
 .api-answer {
     
     display: flex;
     flex-direction: column;
+    font-size: xx-large;
+    color: hotpink;
+
 
 }
+
+.api-question{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    
+}
+
+h2 {
+    display: flex; }
