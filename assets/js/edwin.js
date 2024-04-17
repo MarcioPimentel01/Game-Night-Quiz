@@ -94,7 +94,7 @@ function checkCount() {
     setCount();
     if(askedCount == totalQuestion) {
         window.location.href = 'end-page.html';
-        // _result.innerHTML = `<p> Your score is: ${correctScore}. </p>`;
+        _result.innerHTML = `<p> Your score is: ${correctScore}. </p>`;
         // _playAgainBtn.style.display = "none"
     } else {
         setTimeout(()=> {
