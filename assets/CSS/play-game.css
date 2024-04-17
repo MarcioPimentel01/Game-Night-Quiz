@@ -1,22 +1,109 @@
-* {
-    box-sizing: border-box;
+/* Blue glowing background with semi-transparent image */
+body {
+    background: radial-gradient(circle, rgba(11, 11, 238, 0.3) 0%, rgba(30, 12, 219, 0.6) 100%),
+                url('loop-futuristic-neon-grid-line-background-free-video.jpeg') center/cover;
+    animation: glowAnimation 5s ease-in-out infinite alternate;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-align: center;
 }
-
-.api-answer {
-    
-    display: flex;
-    flex-direction: column;
-    font-size: xx-large;
-    color: hotpink;
-
-
+@keyframes glowAnimation {
+    10% {
+        box-shadow: 0 0 10px 5px rgba(255, 0, 187, 0.902);
+    }
+    100% {
+        box-shadow: 0 0 20px 10px rgba(10, 220, 227, 0.7);
+    }
 }
-
-.api-question{
+/* Logo */
+.logo-game-page img {
+    width: 150px; /* Adjusting the size */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensure the logo is above other elements */
+    filter: drop-shadow(0 0 10px #CA8D8D); /* Neon glow effect */
+}
+/* Progress bar */
+.progress-bar {
+    background-color: rgba(132, 9, 137, 0.3);
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+}
+/* Question styles */
+.api-question {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(255, 0, 255, 0.5); /* Neon purple background */
+    border-radius: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: xx-large;
-    
+    font-size: large; /* Adjust the font size as needed */
+    color: #EAD110; /* White text color */
+    text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF, 0 0 40px #FF00FF, 0 0 50px #FF00FF, 0 0 60px #FF00FF, 0 0 70px #FF00FF; /* Neon glow effect */
+}
+/* Answer styles */
+.api-answer {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(30, 201, 201, 0.5); /* Neon cyan background */
+    border-radius: 10px;
+    font-size: large; /* Adjusting the font size */
+    color: #E213B2; /* White text color */
+    text-shadow: 0 0 10px #0ED1D1, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF, 0 0 60px #00FFFF, 0 0 70px #00FFFF; /* Neon glow effect */
+}
+/* Score count */
+.score-count {
+    background-color: #FF4081; /* Pink button color */
+    color: rgb(31, 46, 209);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 0 20px #FF4081; /* Neon glow effect */
+}
+/* Study group logo */
+.study-grup-logo img {
+    width: 150px;
+    margin-top: 20px;
+    filter: drop-shadow(0 0 10px #fff); /* Neon glow effect */
 }
 
-h2 {
-    display: flex; }
+
+
+
+
+3:28
+this is what i have
+3:28
+but i think the apis are not working
+
+
+
+
+
+
+
+
+
+
+
+Message Maria roa
+
+
+
+
+
+
+
+
+
+Shift + Enter to add a new line
+
+
+
+Slack needs your permission to enable desktop notifications.

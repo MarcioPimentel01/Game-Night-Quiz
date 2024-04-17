@@ -1,10 +1,15 @@
 *{
     font-family: poppins;
     box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 body{
-    background-color: black;
-    color: #fff;
+    background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   color: black;
+    width: 68%
 
 }
 .wrapper{
@@ -18,7 +23,9 @@ body{
     position: relative;
     overflow: hidden;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5s);
-    justify-content: space-between;
+    right: -470px;
+    bottom: -50px;
+    
 }
 .box img{
     /* width: 100%; */
@@ -29,42 +36,45 @@ body{
 }
 .overlay{
     height: 0;
-    width: 30%;
-    background: linear-gradient(transparent, #1c1c1c 58%);
-    border-radius: 10px;
+    width: 39.7%;
+    background: linear-gradient(transparent, #b45ba0 100%);
+    border-radius: 0px;
     position: absolute;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
+    left: 4.5%;
+    bottom: 48px;
+   overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 40px;
+    padding: 0 10px;
     text-align: center;
     font-size: 14px;
     transition: height 0.5s;
 }
 
-.overlay h3{
+.overlay p{
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom:350px;
     margin-top: 80%;
     font-family: bebas neue;
     font-size: 20px;
     letter-spacing: 2px;
-    justify-content: space-between;
+    
+    
 
 }
 .overlay a{
-    margin-top: 10px;
+    position: absolute;
     color: #262626;
     text-decoration: none;
     font: 14px;
     background: #fff;
     border-radius: 50px;
-    text-align: center;
+    left: 160px;
     padding: 5px 15px;
-    justify-content: space-between;
+    top: 60%;
+   
+    
 }
 .boxLhover img{
     transform: scale(1.2);
@@ -72,4 +82,3 @@ body{
 .box:hover .overlay{
     height: 50%;
 }
-
