@@ -19,32 +19,30 @@ let questionsTv = [];
 document.addEventListener('DOMContentLoaded', () => {
     classApiScore.textContent = quizScore;
     classApiTotalOfQuestions.textContent = totalQuestions;
-})
+    loadQuestionsTv(); // Load questions when the game starts
+});
 
-async function loadQuestionTv() {
+async function loadQuestionsTv() {
     const APIUrl = `https://opentdb.com/api.php?amount=10&category=14&difficulty=medium&type=multiple`;
     const APIObjectTv = await fetch(APIUrl);
-    questionsTv = await APIObjectTv.json();
+    const questionsData = await APIObjectTv.json();
+    questionsTv = questionsData.results; // Store all questions in the global variable
     
-    console.log(questionsTv.results) //shows the array of objects
-
-    displayQuestions();
+    displayQuestion(); // Display the first question
 }
 
-let currentQuestionIndex = 0;
-
-function displayQuestions() {
-    const question = questionsTv.results[currentQuestionIndex]; //uses the const 'question' so i can retrive the values correc
+function displayQuestion() {
+    const question = questionsTv[counting];
     correctAnswer = question.correct_answer;
-    let incorrectAnswer = question.incorrect_answers;
-    let optionsList = [...incorrectAnswer];
-    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+    let incorrectAnswers = question.incorrect_answers;
+    let optionsList = [...incorrectAnswers];
+    optionsList.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)), 0, correctAnswer);
 
     classApiQuestion.innerHTML = ''; 
     const questionDiv = document.createElement('div'); 
     questionDiv.classList.add('api-question');
     const questionHeader = document.createElement('h2'); 
-    questionHeader.textContent = `Question ${HTMLDecode(currentQuestionIndex) + 1}: ${question.question}`; 
+    questionHeader.textContent = `Question ${counting + 1}: ${HTMLDecode(question.question)}`; 
     questionDiv.appendChild(questionHeader);                                                   
     classApiAnswer.innerHTML = ''; 
 
@@ -71,10 +69,9 @@ function checkAnswer(selectedAnswer) {
         checkAnswerSpan.innerHTML = `<p><i class="right-answer"></i> Correct Answer!</p><br>`;
     } else {
         // quizScore = quizScore;
-        checkAnswerSpan.innerHTML = `<p><i class="wrong-anser"></i> Incorrect Answer! <small><b>Correct Answer: </b>${correctAnswer}</small></p>`;
+        checkAnswerSpan.innerHTML = `<p><i class="wrong-anser"></i> Incorrect Answer! <small><b>Correct Answer: </b>${HTMLDecode(correctAnswer)}</small></p>`;
     } 
     checkCount();
-
 }
 
 function checkCount() {
@@ -89,9 +86,7 @@ function checkCount() {
         newGameBtn.style.display = "block";
         checkAnswerSpan.style.display = "none";
     } else {
-        setTimeout(function() {
-            loadQuestionTv();
-        }, 300);
+        setTimeout(displayQuestion, 300); // Display the next question after a delay
     }
 }
 
@@ -99,5 +94,3 @@ function setCount() {
     classApiTotalOfQuestions.textContent = totalQuestions;
     classApiScore.textContent = quizScore;
 }
-
-loadQuestionTv();
