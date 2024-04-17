@@ -1,3 +1,5 @@
+//Functional copy of tv
+
 // Define HTMLDecode function
 function HTMLDecode(textString) {
     let doc = new DOMParser().parseFromString(textString, "text/html");
@@ -14,6 +16,7 @@ const newGameBtn = document.getElementById('play-again');
 const result = document.getElementById('result');
 
 let correctAnswer = '', quizScore = counting = 0, totalQuestions = 10;
+// let previousAnswerIndex = - 1;
 let questionsTv = [];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -83,7 +86,7 @@ function checkCount() {
         }, 5000);
 
         result.innerHTML += `<p>Your score is ${quizScore}.</p>`;
-        newGameBtn.style.display = "block";
+        // newGameBtn.style.display = "block";
         checkAnswerSpan.style.display = "none";
     } else {
         setTimeout(displayQuestion, 300); // Display the next question after a delay
@@ -94,3 +97,9 @@ function setCount() {
     classApiTotalOfQuestions.textContent = totalQuestions;
     classApiScore.textContent = quizScore;
 }
+// function calculateScore(answer, baseValue, bonusMultiplier) {
+//     for (let correctAnswer = 0; correctAnswer < array.length; correctAnswer++) {
+//         const element = array[correctAnswer];
+        
+//     }
+// }
