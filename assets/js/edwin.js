@@ -6,7 +6,7 @@ const _answer = document.querySelector('.api-answer')
 const _correctScore = document.getElementById('correct-score')
 const _totalQuestion = document.getElementById('total-question');
 const _checkBtn = document.getElementById('check-answer');
-const _playAgainBtn = document.getElementById('play-again');
+//const _playAgainBtn = document.getElementById('play-again');
 const _result = document.getElementById('result');
 
 
@@ -17,6 +17,7 @@ let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 
 function eventlisteners() {
     _checkBtn.addEventListener('click', checkAnswer);
+    //_playAgainBtn.addEventListener('click', restartQuiz);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,11 +32,12 @@ async function loadQuestionMusic() {
     const result = await fetch(`${APIUrlMusic}`);
     const data = await result.json();
     //console.log(data.results[0]);
-    //
+    _result.innerHTML = "";
     displayQuestion(data.results[0]);
 }
 
 function displayQuestion(data) {
+    _checkBtn.disabled = false;
     correctAnswer = data.correct_answer;
     let incorrectAnswer = data.incorrect_answers;
     let optionsList = incorrectAnswer;
@@ -50,7 +52,8 @@ function displayQuestion(data) {
 //slected answer
 function selectedAnswer() {
     _answer.querySelectorAll('li').forEach((answer) => {
-        option.addEventListener('click', () => {
+        answer.addEventListener('click', () => {
+            console.log('Answer clicked:', answer.textContent);
             if(_answer.querySelector('.selected')) {
                 const activeAnswer = _.answer.querySelector('.selected');
                 activeAnswer.classList.remove('selected');
@@ -73,6 +76,10 @@ function checkAnswer() {
         } else {
             _result.innerHTML = `<p> <i class="fas fa-times"></i>Incorrect Answer!! </p> <p><small><b>Correct Answer: </b> ${correctAnswer}</small></p>`;
         }
+        checkCount();
+    } else {
+        _result.innerHTML = `<p><i class = "fas fa-question"></i>PLease select an option! </p>`;
+        _checkBtn.disabled = false;
     }
 }
 
@@ -80,4 +87,33 @@ function checkAnswer() {
 function HTMLDecode(textString) {
     let doc = new DOMParser().parseFromString(textString, "text/html");
     return doc.documentElement.textContent;
+}
+
+function checkCount() {
+    askedCount++;
+    setCount();
+    if(askedCount == totalQuestion) {
+        window.location.href = 'end-page.html';
+        // _result.innerHTML = `<p> Your score is: ${correctScore}. </p>`;
+        // _playAgainBtn.style.display = "none"
+    } else {
+        setTimeout(()=> {
+            loadQuestionMusic();
+
+        }, 300);
+    }
+}
+
+function setCount() {
+    _totalQuestion.textContent = totalQuestion;
+    _correctScore.textContent = correctScore;
+}
+
+function restartQuiz() {
+    correctScore = askedCount = 0;
+    _playAgainBtn.style.display = "none";
+    _checkBtn.style.display = "block";
+    _checkBtn.disabled = false;
+    setCount();
+    loadQuestionMusic();
 }
