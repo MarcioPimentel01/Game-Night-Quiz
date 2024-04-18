@@ -207,7 +207,7 @@ header .menu{
     inset: 0 0 0 0;
     overflow: hidden;
     opacity: 0;
-    transition: 5s;
+    transition: .8s;
 }
 .slider .list ,.item img{
     width: 100%;
@@ -261,13 +261,13 @@ header .menu{
     transform: translateY(30px);
     filter: blur(20px);
     opacity: 0;
-    animation: showContent .5s .7s ease-in-out 1 forwards;
+    animation: showContent .2s .3s ease-in-out 1 forwards;
 }
 .slider .list .item.active h2{
-    animation-delay: 1s;
+    animation-delay: 0.3s;
 }
 .slider .list .item.active p:nth-child(3){
-    animation-delay: 1.3s;
+    animation-delay: 0.3s;
 }
 .arrows{
     position: absolute;
