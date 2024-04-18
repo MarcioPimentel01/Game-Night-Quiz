@@ -86,7 +86,7 @@ function checkCount() {
         }, 5000);
 
         result.innerHTML += `<p>Your score is ${quizScore}.</p>`;
-        // newGameBtn.style.display = "block";
+        goToEndPage()
         checkAnswerSpan.style.display = "none";
     } else {
         setTimeout(displayQuestion, 300); // Display the next question after a delay
@@ -96,7 +96,15 @@ function checkCount() {
 function setCount() {
     classApiTotalOfQuestions.textContent = totalQuestions;
     classApiScore.textContent = quizScore;
+
 }
+function goToEndPage (){
+    window.location.href = `end-page.html`
+}
+
+
+
+
 // function calculateScore(answer, baseValue, bonusMultiplier) {
 //     for (let correctAnswer = 0; correctAnswer < array.length; correctAnswer++) {
 //         const element = array[correctAnswer];
