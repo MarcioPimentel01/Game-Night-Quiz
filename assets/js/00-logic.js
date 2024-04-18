@@ -1,5 +1,3 @@
-// logic.js
-
 // Function to load category JavaScript file dynamically
 function loadCategoryScript(category) {
     const script = document.createElement('script');

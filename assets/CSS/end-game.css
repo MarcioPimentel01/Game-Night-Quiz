@@ -32,7 +32,7 @@ body{
     position: relative;
     overflow: hidden;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.5s);
-    right: -470px;
+    right: -600px;
     bottom: -50px;
     
     
@@ -49,11 +49,11 @@ body{
 /* targets the card overlay */
 .overlay{
     height: 0;
-    width: 39.7%;
+    width: 32%;
     background: linear-gradient(transparent, #b45ba0 100%);
     border-radius: 0px;
     position: absolute;
-    left: 4.7%;
+    left: 3.7%;
     bottom: 48px;
     overflow: hidden;
     display: flex;
