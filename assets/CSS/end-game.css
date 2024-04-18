@@ -1,23 +1,32 @@
 *{
-    font-family: poppins;
+    
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
+
+@font-face{
+    font-family: fallout;
+    src: url(/Game-Night-Quiz/assets/Fonts/KrunchBold-OKn6.ttf);
+}
+
 body{
     background-size: cover;
    background-repeat: no-repeat;
    background-position: center;
    color: black;
     width: 68%
+   
 
 }
+/* code for our image card */
 .wrapper{
     padding: 10px 0;
 }
 #card-area{
     padding: 50px 0;
 }
+/* targets the whole image card */
 .box{
     border-radius: 10px;
     position: relative;
@@ -26,7 +35,10 @@ body{
     right: -470px;
     bottom: -50px;
     
+    
 }
+
+/* targets the image within the card */
 .box img{
     /* width: 100%; */
     border-radius: 10px;
@@ -34,15 +46,16 @@ body{
     transition: transform 0.5s;
 
 }
+/* targets the card overlay */
 .overlay{
     height: 0;
     width: 39.7%;
     background: linear-gradient(transparent, #b45ba0 100%);
     border-radius: 0px;
     position: absolute;
-    left: 4.5%;
+    left: 4.7%;
     bottom: 48px;
-   overflow: hidden;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,29 +63,36 @@ body{
     text-align: center;
     font-size: 14px;
     transition: height 0.5s;
+    opacity: 150%;
 }
-
+/* targets font wrapped in p tags */
 .overlay p{
     font-weight: 500;
     margin-bottom:350px;
     margin-top: 80%;
-    font-family: bebas neue;
+    color: #fff;
     font-size: 20px;
     letter-spacing: 2px;
+    font-family: fallout;
+    font-size: 24px;
     
     
 
 }
+/* targets button wrapped in a tags */
 .overlay a{
     position: absolute;
-    color: #262626;
+    color: #fff;
     text-decoration: none;
     font: 14px;
-    background: #fff;
-    border-radius: 50px;
+    background: #0b0b0b;
+    border-radius: 70px;
     left: 160px;
     padding: 5px 15px;
     top: 60%;
+    font-family: fallout;
+    width: 100px;
+    height: 40px
    
     
 }

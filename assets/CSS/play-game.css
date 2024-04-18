@@ -1,3 +1,4 @@
+///* play-game.css */
 /* Blue glowing background with semi-transparent image */
 body {
     background: radial-gradient(circle, rgba(11, 11, 238, 0.3) 0%, rgba(30, 12, 219, 0.6) 100%),
@@ -41,19 +42,19 @@ body {
     border-radius: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: large; /* Adjust the font size as needed */
-    color: #EAD110; /* White text color */
+    color: #EADF10; /* White text color */
     text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF, 0 0 40px #FF00FF, 0 0 50px #FF00FF, 0 0 60px #FF00FF, 0 0 70px #FF00FF; /* Neon glow effect */
 }
-/* Answer styles */
-.api-answer {
-    margin: 20px auto;
+button {
+    background-color: rgb(241, 14, 143);
+    margin: 2px auto;
     max-width: 600px;
     padding: 20px;
     background-color: rgba(30, 201, 201, 0.5); /* Neon cyan background */
     border-radius: 10px;
-    font-size: large; /* Adjusting the font size */
-    color: #E213B2; /* White text color */
-    text-shadow: 0 0 10px #0ED1D1, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF, 0 0 60px #00FFFF, 0 0 70px #00FFFF; /* Neon glow effect */
+    font-size: 80%; /* Adjusting the font size */
+    color: #DF1286; /* White text color */
+    text-shadow: 0 0 10px #0BC5E6, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF, 0 0 50px #00FFFF, 0 0 60px #00FFFF, 0 0 70px #00FFFF; /* Neon glow effect */
 }
 /* Score count */
 .score-count {
@@ -69,41 +70,10 @@ body {
 /* Study group logo */
 .study-grup-logo img {
     width: 150px;
-    margin-top: 20px;
+    margin-bottom: 10px;
     filter: drop-shadow(0 0 10px #fff); /* Neon glow effect */
 }
-
-
-
-
-
-3:28
-this is what i have
-3:28
-but i think the apis are not working
-
-
-
-
-
-
-
-
-
-
-
-Message Maria roa
-
-
-
-
-
-
-
-
-
-Shift + Enter to add a new line
-
-
-
-Slack needs your permission to enable desktop notifications.
+/* the quizz is in a box with the code below */
+* {
+    box-sizing: border-box;
+}
