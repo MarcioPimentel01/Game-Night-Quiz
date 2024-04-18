@@ -15,7 +15,7 @@ const checkAnswerSpan = document.getElementById('check-answer');
 const newGameBtn = document.getElementById('play-again');
 const result = document.getElementById('result');
 
-let correctAnswer = '', quizScore = counting = 0 , totalQuestions = 10;
+let correctAnswer = '', quizScore = counting = 0, totalQuestions = 10;
 // let previousAnswerIndex = - 1;
 let questionsTv = [];
 
@@ -40,7 +40,7 @@ function displayQuestion() {
     let incorrectAnswers = question.incorrect_answers;
     let optionsList = [...incorrectAnswers];
     optionsList.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)), 0, correctAnswer);
-    
+
     classApiQuestion.innerHTML = ''; 
     const questionDiv = document.createElement('div'); 
     questionDiv.classList.add('api-question');
@@ -48,16 +48,16 @@ function displayQuestion() {
     questionHeader.textContent = `Question ${counting + 1}: ${HTMLDecode(question.question)}`; 
     questionDiv.appendChild(questionHeader);                                                   
     classApiAnswer.innerHTML = ''; 
-    
+
     optionsList.forEach((answer, answerIndex) => {
         const answerButton = document.createElement('button');
         answerButton.classList.add('answer-option');
         answerButton.textContent = `${answerIndex + 1}. ${HTMLDecode(answer)}`; // Apply HTMLDecode to answer text
-        
+
         answerButton.addEventListener('click', () => { 
             checkAnswer(answer); // Call checkAnswer when an option is selected
         });
-        
+
         classApiAnswer.appendChild(answerButton);
     });
 
@@ -72,7 +72,7 @@ function checkAnswer(selectedAnswer) {
         checkAnswerSpan.innerHTML = `<p><i class="right-answer"></i> Correct Answer!</p><br>`;
     } else {
         // quizScore = quizScore;
-        checkAnswerSpan.innerHTML = `<p><i class="wrong-anser"></i> Incorrect Answer! <small><b>Correct Answer: </b>${HTMLDecode(correctAnswer)}</small></p><br>`;
+        checkAnswerSpan.innerHTML = `<p><i class="wrong-anser"></i> Incorrect Answer! <small><b>Correct Answer: </b>${HTMLDecode(correctAnswer)}</small></p>`;
     } 
     checkCount();
 }
@@ -84,8 +84,9 @@ function checkCount() {
         setTimeout(function() {
             console.log("");
         }, 5000);
-        
+
         result.innerHTML += `<p>Your score is ${quizScore}.</p>`;
+        // newGameBtn.style.display = "block";
         checkAnswerSpan.style.display = "none";
     } else {
         setTimeout(displayQuestion, 300); // Display the next question after a delay
@@ -93,19 +94,12 @@ function checkCount() {
 }
 
 function setCount() {
-    const scoreDisplay = document.createElement(`span`);
-    scoreDisplay.classList.add(`score-count`);
-    const scoreHeader = document.createElement(`h2`);
-    scoreHeader.textContent = `${quizScore} Of`;
-    scoreDisplay.appendChild(scoreHeader);
-    classApiScore.textContent = quizScore;
-    
-    
     classApiTotalOfQuestions.textContent = totalQuestions;
+    classApiScore.textContent = quizScore;
 }
 // function calculateScore(answer, baseValue, bonusMultiplier) {
 //     for (let correctAnswer = 0; correctAnswer < array.length; correctAnswer++) {
-    //         const element = array[correctAnswer];
+//         const element = array[correctAnswer];
         
-    //     }
-    // }
+//     }
+// }

@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TV Quiz</title>
+    <!-- Link to your CSS file if needed -->
+    <link rel="stylesheet" href="./assets/CSS/play-game.css">
 </head>
 <body>
-    <h1>Console log</h1>
-    <!-- <script src="./assets/js/test.js"></script> -->
-    <script src="./assets//js/filmes.js"></script>
+    <div class="progress-bar">
+        <!-- Progress bar -->
+        <p></p>
+        <span class="score-count"> </span> 
+        <span class="total-questions"></span> <!-- Displaying total questions -->
+    </div>
+    <div class="quiz-container">
+        <div class="api-question">
+            <!-- Display question here -->
+        </div>
+        <div class="api-answer">
+            <!-- Display answer options here -->
+        </div>
+        <div id="result">
+            <!-- Display result here -->
+        </div>
+        <span id="check-answer"></span>
+    </div>
+
+    <script src="./assets/js/test.js"></script>
 </body>
 </html>

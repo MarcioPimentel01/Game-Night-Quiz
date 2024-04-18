@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/CSS/play-game.css">
 </head>
 <body>
-    
+
     <div class="progress-bar">
         <!-- the progess bar goes here -->
         <p>Please wait while questions are loading...</p>
-        <div class="score-count">0</div>
+        <span id="correct-score"></span>/<span id="total-question"></span>
     </div>
-    <div class="api-question">
-        
+    <h2 class="api-question" id="question">
+        <br>
+        <span class="category"></span>
+    </h2>
+    <!--result here-->
+    <div class="api-answer" id="answers">
+        <!--<ul class="answers">
+             Answer options will be dynamically added here
+        </ul>-->
     </div>
-    <div class="api-answer">
-       
+    <div id="result">
+        <!--result here-->
     </div>
-
+    <div class="quiz-foot">
+        <!--<button type="button" id="check-answer">Check answer</button>-->
+        <!--<button type = "button" id = "play-again">Play Again!</button>
+    </div>
 
     <script src="./assets/js/edwin.js"></script>
 
-
 </body>
+
 </html>
