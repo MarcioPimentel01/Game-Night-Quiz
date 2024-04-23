@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Night Quiz - The Game</title>
+    <title>TV Quiz</title>
+    <!-- Link to your CSS file if needed -->
     <link rel="stylesheet" href="./assets/CSS/play-game.css">
 </head>
 <body>
-
-    <!-- Anthony and Maria, see if you can display a smaller version of the logo on the top left corner -->
-    <!-- I set I different class for this logo, so the css from the index page will not interfere with this one. -->
-    <div class="logo-game-page">
-        <img src="./assets/images/logo.png" alt="Game night Quiz">
-    </div>
-    
     <div class="progress-bar">
-        <!-- the progess bar goes here -->
-        <p>Please wait while questions are loading...</p>
-        <div class="score-count">0</div>
+        <!-- Progress bar -->
+        <p></p>
+        <span class="score-count"> </span> 
+        <span class="total-questions"></span> <!-- Displaying total questions -->
     </div>
-    <div id="question" class="api-question">
-        <div id="answers" class="api-answer">
+    <div class="quiz-container">
+        <div id="question" class="api-question">
+            <!-- Display question here -->
+        </div>
+        <div id="answers" class="answer-option">
+            <!-- Display answer options here -->
+        </div>
+        <div id="result">
+            <!-- Display result here -->
+        </div>
+        <button id ='submit'>submit</button>i/.
+        <span id="final-score"></span>
     </div>
-
-    <!-- if everyone agrees, lets keep our study group logo in all pages -->
-    <footer class="study-grup-logo">
-        <img src="./assets/images/study-grup-logo.png" alt="UCF bootcamp Study Grup">
-    </footer>
 
     <script src="./assets/js/filmes.js"></script>
-  </body>
+</body>
 </html>

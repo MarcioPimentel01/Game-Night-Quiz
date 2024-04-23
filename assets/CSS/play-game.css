@@ -20,3 +20,12 @@
 
 h2 {
     display: flex; }
+
+.api-question {
+    background-color: red;
+}
+
+.api-answer {
+    display: flex;
+    background-color: black;
+}
