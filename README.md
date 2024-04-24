@@ -84,5 +84,3 @@ Takes two numbers and returns the sum.
 testin edwin ver.2
 -[@EdRivera016] https://github.com/EdRivera016
 -[@MarcioPimentel01] https://github.com/marciopimentel01
-Edwin Omar Rivera Caraballo(hello world)
-lets get itt
