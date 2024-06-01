@@ -41,6 +41,7 @@ function displayQuestion() {
     let optionsList = [...incorrectAnswers];
     optionsList.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)), 0, correctAnswer);
 
+    
     classApiQuestion.innerHTML = ''; 
     const questionDiv = document.createElement('div'); 
     questionDiv.classList.add('api-question');
